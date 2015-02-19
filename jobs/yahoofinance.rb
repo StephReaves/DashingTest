@@ -6,8 +6,8 @@ require "json"
 
 class Connection
 
-  ENDPOINT = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quoteslist%20where%20symbol%3D'%5Egspc'&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
-
+  ENDPOINT = "https://query.yahooapis.com/v1/public"
+  
   def initialize(endpoint = ENDPOINT)
     uri = URI.parse(endpoint)
     @http = Net::HTTP.new(uri.host, uri.port)
@@ -40,8 +40,12 @@ class Connection
   rescue JSON::ParserError
     response
   end
-  
+
 end
+
+test = Connection.new	
+test.get('/yql?q=select%20*%20from%20yahoo.finance.quoteslist%20where%20symbol%3D'%5Egspc'&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback="
+')
 
 SCHEDULER.every '1m', :first_in => 0 do |job|
   send_event('yahoofinance', { })
