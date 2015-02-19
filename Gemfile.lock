@@ -80,6 +80,7 @@ GEM
       simple_oauth (~> 0.2.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    yql (0.0.2)
 
 PLATFORMS
   ruby
@@ -87,3 +88,4 @@ PLATFORMS
 DEPENDENCIES
   dashing
   twitter (>= 5.9.0)
+  yql
